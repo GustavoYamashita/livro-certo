@@ -1,17 +1,17 @@
 from django.shortcuts import render
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'galeria/index.html')
 
-def imagem(request):
-    return render(request, 'src/pages/biblioteca.html')
+def imagem1(request):
+    return render(request, 'galeria/biblioteca.html')
 
-def imagem(request):
-    return render(request, 'src/pages/alunos.html')
+def imagem2(request):
+    return render(request, 'galeria/alunos.html')
 
-def imagem(request):
-    return render(request, 'src/pages/emprestar.html')
+def imagem3(request):
+    return render(request, 'galeria/emprestar.html')
 
-def imagem(request):
-    return render(request, 'src/pages/livro-tombo.html')
+def imagem4(request):
+    return render(request, 'galeria/livro-tombo.html')
 
