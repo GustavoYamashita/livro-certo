@@ -14,4 +14,3 @@ def imagem3(request):
 
 def imagem4(request):
     return render(request, 'galeria/livro-tombo.html')
-
