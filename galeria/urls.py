@@ -1,11 +1,11 @@
 from django.urls import path
-from galeria.views import index, imagem1, imagem2, imagem3, imagem4
+from galeria.views import index, biblioteca, alunos, emprestar, livro_tombo  # Renomeie as imports para nomes mais descritivos
 
 urlpatterns = [
-    path('',index),
-    path('index/',index, name = 'index'),
-    path('biblioteca/', imagem1, name = 'biblioteca'),
-    path('alunos/', imagem2, name = 'alunos'),
-    path('emprestar/', imagem3, name = 'emprestar'),
-    path('livro-tombo/', imagem4, name = 'livro-tombo'),
+    path('', index, name='index'),
+    path('index/', index, name='index'),
+    path('biblioteca/', biblioteca, name='biblioteca'),  # Agora aponta para a view 'biblioteca'
+    path('alunos/', alunos, name='alunos'),
+    path('emprestar/', emprestar, name='emprestar'),
+    path('livro-tombo/', livro_tombo, name='livro-tombo'),
 ]

@@ -31,3 +31,23 @@ window.addEventListener("click", (event) => {
         }
     });
 });
+
+// Sistema de busca biblioteca
+document.addEventListener('DOMContentLoaded', function() {
+    const campoBusca = document.querySelector('.campo-busca');
+    const botaoFiltrar = document.querySelector('.botao-filtrar');
+    
+    botaoFiltrar.addEventListener('click', function() {
+        const termo = campoBusca.value.trim();
+        if(termo) {
+            window.location.href = `?busca=${encodeURIComponent(termo)}`;
+        }
+    });
+    
+    campoBusca.addEventListener('keypress', function(e) {
+        if(e.key === 'Enter') {
+            botaoFiltrar.click();
+        }
+    });
+});
+

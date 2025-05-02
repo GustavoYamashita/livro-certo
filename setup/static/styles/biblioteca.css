@@ -1,0 +1,135 @@
+.filtro-alfabetico {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    padding: 15px;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+
+.letra {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: #fff;
+    border-radius: 50%;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.todos {
+    text-decoration: underline;
+}
+
+.todos:hover {
+    color: var(--cor-p1);
+}
+
+.letra:hover, .letra.ativa {
+    background: var(--cor-p1);
+    color: white;
+    transform: scale(1.1);
+}
+
+.filtro-busca {
+    padding: 10px;
+    padding-left: 20px;
+}
+
+.campo-busca{
+    width: 300px;
+    height: 40px;
+    border: 1px solid var(--cor-2);
+    border-radius: 50px;
+}
+
+input {
+    padding: 20px;
+    text-indent: 0px;
+    color: gray;
+}
+
+/* Estilos para a exibição dos livros */
+.grid-livros {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 25px;
+    padding: 20px;
+}
+
+.livro-card {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.livro-card:hover {
+    transform: translateY(-5px);
+}
+
+.capa-livro {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.capa-padrao {
+    width: 100%;
+    height: 250px;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.livro-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.livro-info .autor {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.paginacao {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.passos a {
+    color: var(--cor-p1);
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+    border-radius: 4px;
+}
+
+.passos a:hover {
+    background: var(--cor-p1);
+    color: white;
+    border-color: var(--cor-p1);
+}
+
+.atual {
+    padding: 8px 16px;
+    background: var(--cor-p1);
+    color: white;
+    border-radius: 4px;
+}
