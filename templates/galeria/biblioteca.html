@@ -105,8 +105,84 @@
     <div>
         <h1 class="h1-title">Biblioteca</h1>
     </div>
+
+    <div class="filtro-container">
+        <div class="filtro-alfabetico">
+            <a href="?" class="todos {% if not letra_atual %}ativa{% endif %}">Todos</a>
+            {% for letra in "ABCDEFGHIJKLMNOPQRSTUVWXYZ#" %}
+                <a href="?letra={{ letra }}" class="letra {% if letra == letra_atual %}ativa{% endif %}">
+                    {{ letra }}
+                </a>
+            {% endfor %}
+        </div>
+        
+        <div class="filtro-busca">
+            <input type="text" placeholder="Pesquisar por título..." class="campo-busca">
+            <button class="botao-filtrar">Filtrar</button>
+        </div>
+    </div>
+
+    <div class="livros-container">
+        {% if page_obj %}
+            <div class="grid-livros">
+                {% for livro in page_obj %}
+                    <div class="livro-card">
+                        {% if livro.capa %}
+                            <img src="{{ livro.capa.url }}" alt="{{ livro.nome_livro }}" class="capa-livro">
+                        {% else %}
+                            <div class="capa-padrao">Sem imagem</div>
+                        {% endif %}
+                        <div class="livro-info">
+                            <h3>{{ livro.nome_livro }}</h3>
+                            <p class="autor">{{ livro.autor }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="sem-livros">Nenhum livro disponível no momento.</p>
+        {% endif %}
+    </div>
+
+    <div class="paginacao">
+        <span class="passos">
+            {% if page_obj.has_previous %}
+                <a href="?page=1{% if letra_atual %}&letra={{ letra_atual }}{% endif %}">&laquo; primeira</a>
+                <a href="?page={{ page_obj.previous_page_number }}{% if letra_atual %}&letra={{ letra_atual }}{% endif %}">anterior</a>
+            {% endif %}
+            
+            <span class="atual">
+                Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+            </span>
+            
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}{% if letra_atual %}&letra={{ letra_atual }}{% endif %}">próxima</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}{% if letra_atual %}&letra={{ letra_atual }}{% endif %}">última &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
     
    </main>
+   
+   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const campoBusca = document.querySelector('.campo-busca');
+        const botaoFiltrar = document.querySelector('.botao-filtrar');
+        
+        botaoFiltrar.addEventListener('click', function() {
+            const termo = campoBusca.value.trim();
+            if(termo) {
+                window.location.href = `?busca=${encodeURIComponent(termo)}`;
+            }
+        });
+        
+        campoBusca.addEventListener('keypress', function(e) {
+            if(e.key === 'Enter') {
+                botaoFiltrar.click();
+            }
+        });
+    });
+    </script>
    <script src="{% static 'script.js' %}"></script>    
 </body>
 </html>

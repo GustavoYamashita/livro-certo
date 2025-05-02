@@ -1,0 +1,168 @@
+/* Estilos para a exibição dos livros */
+/* Container principal */
+.filtro-container {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Filtro alfabético */
+.filtro-alfabetico {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.filtro-titulo {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #495057;
+}
+
+.filtro-alfabetico .letra {
+    display: inline-block;
+    padding: 5px 10px;
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #495057;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.filtro-alfabetico .letra:hover,
+.filtro-alfabetico .letra.ativa {
+    background: #2c3e50;
+    color: white;
+    border-color: #2c3e50;
+}
+
+/* Campo de busca */
+.filtro-busca {
+    display: flex;
+    gap: 10px;
+}
+
+.campo-busca {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.botao-filtrar {
+    padding: 8px 16px;
+    background: #2c3e50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.botao-filtrar:hover {
+    background: #1a252f;
+}
+
+.letra {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    background: #fff;
+    border-radius: 50%;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.letra:hover, .letra.ativa {
+    background: #4CAF50;
+    color: white;
+    transform: scale(1.1);
+}
+
+.grid-livros {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 25px;
+    padding: 20px;
+}
+
+.livro-card {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.livro-card:hover {
+    transform: translateY(-5px);
+}
+
+.capa-livro {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.capa-padrao {
+    width: 100%;
+    height: 250px;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.livro-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.livro-info .autor {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.paginacao {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.passos a {
+    color: #0049AF;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+    border-radius: 4px;
+}
+
+.passos a:hover {
+    background: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+}
+
+.atual {
+    padding: 8px 16px;
+    background: #4CAF50;
+    color: white;
+    border-radius: 4px;
+}
