@@ -1,0 +1,107 @@
+{% extends 'galeria/base.html' %}
+
+{% block content %}
+<div>
+    <h1 class="h1-title">Questionário de Recomendação</h1>
+</div>
+
+<div class="container-quest py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form method="post" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">1. Qual gênero literário você mais gosta?</label>
+                            <select class="form-select" name="genero" required>
+                                <option value="" disabled selected>Selecione um gênero...</option>
+                                {% for genero in generos_disponiveis %}
+                                    <option value="{{ genero }}">{{ genero }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">2. Que tipo de experiência você busca?</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="clima" id="clima1" value="aventura" required>
+                                <label class="form-check-label" for="clima1">Ação e aventura empolgante</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="clima" id="clima2" value="reflexivo">
+                                <label class="form-check-label" for="clima2">Reflexão profunda e filosófica</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="clima" id="clima3" value="emocional">
+                                <label class="form-check-label" for="clima3">Drama emocional intenso</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="clima" id="clima4" value="humor">
+                                <label class="form-check-label" for="clima4">Humor e leveza</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="clima" id="clima5" value="misterio">
+                                <label class="form-check-label" for="clima5">Mistério e suspense</label>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">3. Com qual tipo de personagem você mais se identifica?</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="personagem" id="personagem1" value="heroi" required>
+                                <label class="form-check-label" for="personagem1">Herói tradicional (corajoso, bondoso)</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="personagem" id="personagem2" value="antiheroi">
+                                <label class="form-check-label" for="personagem2">Anti-herói (complexo, moral ambígua)</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="personagem" id="personagem3" value="vilao">
+                                <label class="form-check-label" for="personagem3">Vilão carismático</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="personagem" id="personagem4" value="intelectual">
+                                <label class="form-check-label" for="personagem4">Intelectual ou cientista</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="personagem" id="personagem5" value="comum">
+                                <label class="form-check-label" for="personagem5">Pessoa comum em situações extraordinárias</label>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">4. Qual cenário mais te atrai?</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ambiente" id="ambiente1" value="futurista" required>
+                                <label class="form-check-label" for="ambiente1">Mundos futuristas e tecnológicos</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ambiente" id="ambiente2" value="historico">
+                                <label class="form-check-label" for="ambiente2">Épocas históricas e passado remoto</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ambiente" id="ambiente3" value="cotidiano">
+                                <label class="form-check-label" for="ambiente3">Cotidiano realista e atual</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ambiente" id="ambiente4" value="fantasia">
+                                <label class="form-check-label" for="ambiente4">Reinos de fantasia e magia</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="ambiente" id="ambiente5" value="espaco">
+                                <label class="form-check-label" for="ambiente5">Exploração espacial e ficção científica</label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-lg w-100 mt-3">
+                            <i class="bi bi-book"></i> Descobrir meus livros
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

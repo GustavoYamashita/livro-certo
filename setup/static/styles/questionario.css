@@ -1,0 +1,36 @@
+.container-quest {
+    margin: 30px 0 0 20px;
+}
+
+.mb-4 {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.form-label {
+    font-size: 20px;
+}
+
+.form-select {
+    margin-top: 20px;
+    width: 300px;
+    height: 40px;
+    border: 1px solid var(--cor-2);
+    border-radius: 10px;
+}
+
+.form-check {
+    margin-top: 20px;
+}
+
+.btn-primary {
+    margin: 30px 0 50px 0;
+    padding: 8px 16px;
+    background: var(--cor-p1);
+    color: white;
+    border: .5px solid var(--cor-p1);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+}

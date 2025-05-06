@@ -99,6 +99,18 @@ ul li a:hover {
     height: 120px;
 }
 
+.botao-login {
+    display: flex;
+    width: 120px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 70px;
+    background-color: var(--cor-1);
+    border: 1px solid var(--cor-4);
+    cursor: pointer;
+}
+
 main {
     display: flex;
     flex-direction: column;

@@ -1,0 +1,81 @@
+.status-disponivel {
+    background-color: #C6EFCE; /* Verde claro como Excel */
+    color: #006100;
+}
+
+.status-indisponivel {
+    background-color: #FFEB9C; /* Amarelo como Excel */
+    color: #9C5700;
+}
+
+.celula-center {
+    text-align: center;
+}
+
+.tabela-livros {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.tabela-livros th, .tabela-livros td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+.tabela-livros th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+.tabela-livros tr:hover {
+    background-color: #f5f5f5;
+}
+
+.filtros {
+    margin: 20px 0;
+    display: flex;
+    gap: 10px;
+}
+
+.filtros input, .filtros select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.botao-filtrar {
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.botao-filtrar:hover {
+    background-color: #45a049;
+}
+
+.paginacao {
+    margin-top: 20px;
+}
+
+.paginacao a {
+    color: #333;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+}
+
+.paginacao a:hover {
+    background-color: #ddd;
+}
+
+.paginacao .atual {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+}

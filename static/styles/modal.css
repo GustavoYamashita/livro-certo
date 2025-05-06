@@ -12,19 +12,6 @@ dialog {
     border: 1px solid var(--cor-4);
 }
 
-
-.open-modal {
-    display: flex;
-    width: 120px;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    border-radius: 70px;
-    background-color: var(--cor-1);
-    border: 1px solid var(--cor-4);
-    cursor: pointer;
-}
-
 #modal-login {
     width: 300px;
     height: 340px;
