@@ -1,0 +1,127 @@
+{% extends 'galeria/base.html' %}
+
+{% block title %}Resultado{% endblock %}
+
+{% block content %}
+<div>
+    <h1 class="h1-title">Resultado</h1>
+</div>
+
+<div class="resultados-container">
+    {% if fallback %}
+    <div class="alert alert-info">
+        <h4><i class="bi bi-info-circle"></i> Nenhum livro encontrado com suas preferências exatas</h4>
+        <p class="mb-0">Mas aqui estão algumas sugestões que você pode gostar:</p>
+    </div>
+    {% else %}
+    <h2 class="text-center mb-4">Livros recomendados para você</h2>
+    {% endif %}
+
+    {% if livros %}
+    <div class="grid-resultados">
+        {% for livro in livros %}
+        <div class="livro-card-resultado" data-livro-id="{{ livro.id }}">
+            {% if livro.capa %}
+                <img src="{{ livro.capa.url }}" alt="{{ livro.nome_livro }}" class="capa-resultado">
+            {% else %}
+                <div class="capa-padrao-resultado">Sem imagem</div>
+            {% endif %}
+            <div class="livro-info-resultado">
+                <h3>{{ livro.nome_livro }}</h3>
+                <p class="autor">{{ livro.autor }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-warning text-center py-4">
+        <i class="bi bi-emoji-frown fs-1"></i>
+        <h3 class="h4 mt-3">Nenhum livro encontrado</h3>
+        <p>Não encontramos livros que combinem com suas preferências.</p>
+    </div>
+    {% endif %}
+    
+    <div class="text-center">
+        <a href="{% url 'questionario' %}" class="btn-refazer">
+            <i class="bi bi-arrow-repeat"></i> Refazer questionário
+        </a>
+    </div>
+</div>
+
+<!-- Modal para detalhes do livro -->
+<div id="livroModal" class="modal-livro">
+    <div class="modal-livro-content">
+        <span class="modal-livro-close">&times;</span>
+        <div class="modal-livro-container">
+            <div class="modal-livro-imagem">
+                <img id="modalLivroCapa" src="" alt="Capa do livro" class="modal-livro-capa">
+            </div>
+            <div class="modal-livro-info">
+                <h2 id="modalLivroTitulo"></h2>
+                <p><strong>Autor:</strong> <span id="modalLivroAutor"></span></p>
+                <p><strong>Gênero:</strong> <span id="modalLivroGenero"></span></p>
+                <p><strong>Em estoque:</strong> <span id="modalLivroQuantidade"></span></p>
+                <div class="modal-livro-resumo">
+                    <h3>Resumo</h3>
+                    <p id="modalLivroResumo"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById("livroModal");
+    const closeBtn = document.querySelector(".modal-livro-close");
+    const livroCards = document.querySelectorAll(".livro-card-resultado");
+    
+    // Abrir modal ao clicar em um card
+    livroCards.forEach(card => {
+        card.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const livroId = this.getAttribute('data-livro-id');
+            
+            // Adiciona classe ao body para evitar scroll
+            document.body.classList.add('modal-open');
+            
+            fetch(`/get-livro-details/${livroId}/`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("modalLivroTitulo").textContent = data.nome_livro;
+                    document.getElementById("modalLivroAutor").textContent = data.autor;
+                    document.getElementById("modalLivroGenero").textContent = data.genero;
+                    document.getElementById("modalLivroQuantidade").textContent = data.quantidade;
+                    document.getElementById("modalLivroResumo").textContent = data.resumo;
+                    
+                    const capaImg = document.getElementById("modalLivroCapa");
+                    if (data.capa_url) {
+                        capaImg.src = data.capa_url;
+                        capaImg.style.display = "block";
+                    } else {
+                        capaImg.style.display = "none";
+                    }
+                    
+                    modal.style.display = "block";
+                })
+                .catch(error => console.error('Error:', error));
+                const capaImg = document.getElementById("modalLivroCapa");
+                const imagemContainer = document.querySelector(".modal-livro-imagem");
+        });
+    });
+    
+    // Fechar modal
+    closeBtn.addEventListener('click', function() {
+        document.body.classList.remove('modal-open');
+        modal.style.display = "none";
+    });
+    
+    window.addEventListener('click', function(event) {
+        if (event.target == modal) {
+            document.body.classList.remove('modal-open');
+            modal.style.display = "none";
+        }
+    });
+});
+</script>
+{% endblock %}
